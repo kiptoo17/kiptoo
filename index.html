@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiptoo Ngetich Kitur - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, #0f172a, #1e293b);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .project-card {
+            @apply bg-gray-800 rounded-lg shadow-md p-6 transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02];
+            color: #e2e8f0;
+        }
+        .project-title {
+            @apply text-green-400 font-semibold text-xl mb-2;
+        }
+        .project-description {
+            @apply text-gray-300 mb-4;
+        }
+        .project-technologies {
+            @apply text-gray-400 text-sm mb-2;
+        }
+        .view-project-link {
+            @apply text-green-300 hover:text-green-400 underline mt-4 block;
+        }
+        .profile-image {
+            border-radius: 50%;
+            object-fit: cover;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #34d399;
+        }
+        .resume-link-container {
+            margin-bottom: 1.5rem;
+        }
+        .resume-embed-container {
+            margin-bottom: 1.5rem;
+        }
+        #resume-section {
+            background-color: #1e293b;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+        .contact-form {
+            background-color: #2d3748;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            margin-top: 1rem;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #4a5568;
+            border-radius: 0.3rem;
+            margin-bottom: 1rem;
+            color: #f7fafc;
+            background-color: #374151;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #34d399;
+            box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            height: 120px;
+        }
+        .contact-form button {
+            @apply bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out shadow-md;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        .contact-form button:hover {
+            @apply bg-green-700;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .social-links img {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+           
+            
+        }
+        
+       
+        
+        .social-links a.twitter { background-color: #1da1f2; }
+        .social-links a.twitter:hover { background-color: #0c85c4; }
+        .social-links a.whatsapp { background-color: #25d366; }
+        .social-links a.whatsapp:hover { background-color: #1e9e46; }
+        .social-links a.github { background-color: #333; }
+        .social-links a.github:hover { background-color: #1a1a1a; }
+        .social-links a.linkedin { background-color: #0077b5; }
+        .social-links a.linkedin:hover { background-color: #004a80; }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            display: block;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background-color: #1e293b;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #0f172a;
+            color: #fff;
+            padding-top: 2rem;
+            overflow-y: auto;
+            z-index: 10;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main {
+            margin-left: 250px;
+            flex: 1;
+        }
+       .container{
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .nav-links {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-links li {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        #hamburger-btn {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 11;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            background-color: #1e293b;
+        }
+
+        #hamburger-btn svg {
+            width: 2rem;
+            height: 2rem;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                transform: translateX(-100%);
+                width: 100%;
+                height: 100vh;
+            }
+            main {
+                margin-left: 0;
+            }
+            #hamburger-btn {
+                display: block;
+            }
+            .nav-open header {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <header class="bg-gradient-to-r text-white py-6">
+        <div class="container  ">
+            <h1 class="text-3xl font-bold text-shadow">Kiptoo Ngetich Kitur</h1>
+            <nav class="nav-links">
+                <ul class="">
+                    <li class="mb-4">
+                        <img  src="pic.jpg" alt="Kiptoo Ngetich Kitur" class="rounded-full  profile-image ">
+                    </li>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                     <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#resume" class="nav-link">Resume</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <button id="hamburger-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+    </button>
+
+    <main class="container  py-12 px-4  ">
+        <div class=" ">
+            <section id="home" class="mb-20">
+                <div class="  items-center ">
+
+                    <div class="">
+                        <h2 class="text-4xl font-bold text-green-400 mb-6 text-shadow">Hello, I'm Kiptoo Ngetich Kitur</h2>
+                        <p class="text-xl text-gray-300 mb-8">
+                            I'm a passionate student at Multimedia University, eager to apply my skills in software engineering to create innovative and impactful projects.
+                        </p>
+                        <a href="#projects" class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out shadow-md">
+                            View My Work
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="about" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">About Me</h2>
+                <div class="flex  items-center gap-12">
+
+                    <div class="">
+                        <p class="text-lg text-gray-300 mb-6">
+                            I am a student at Multimedia University with a strong interest in software Engineering. My academic journey at Multimedia University, along with my foundational years at Tenwek High School and Molo Academy, has equipped me with a diverse skill set and a passion for continuous learning.I am very interested in sharing the knowledge I gained from different sources and Life Experiences. I have some coding knowledge and am very interested in computer science. I am an avid reader and an excellent problem-solver
+
+
+                           <br> <b>  Languages: </b> Python, Java, JavaScript, C, C++, HTML/CSS, Bash</br>
+                           <br> <b> Databases:</b> MySQL, PostgreSQL</br>
+                           <br> <b>Libraries: </b>NumPy, OpenCV</br>
+                           <br><b>Frameworks:</b> Flask, Django, Node.js, Keras, TensorFlow, PyTorch, Bootstrap, Apache Beam</br>
+                           <br><b> Frameworks:</b>,Bootstrap</br>
+                            <br> <b>Tools & Technologies:</b> Git,AWS</br> 
+                           <br> Looking for an opportunity to work in a challenging position combining my skills in Software Engineering, which provides professional development, interesting experiences and personal growth.
+                        </p>
+                        <p class="text-lg text-gray-300">
+                            I am dedicated to developing solutions that are both technically sound and user-centered.
+                        </p>
+                    </div>
+                     <div class="">
+                        <img src="https://placehold.co/400x300" alt="About Me" class="rounded-lg shadow-md w-full border-2 border-green-500">
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card">
+                        <h3 class="project-title">Project 1: [Project Name]</h3>
+                        <p class="project-description">Description of the project.</p>
+                        <p class="project-technologies">Technologies used: [e.g., HTML, CSS, JavaScript]</p>
+                        <div class="mt-4">
+                            <img src="https://placehold.co/400x300" alt="Project 1" class="rounded-md w-full border-2 border-green-500">
+                        </div>
+                        <a href="#" class="view-project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-title">Project 2: LETEWA APP</h3>
+                        <p class="project-description">food ordering system</p>
+                        <p class="project-technologies">javascript ,html, css</p>
+                        <div class="mt-4">
+                            <img src="letewa.png" alt="Project 2" class="rounded-md w-full border-2 border-green-500">
+                        </div>
+                        <a href="MOMOMIA/index.html" class="view-project-link">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-title">Project 3: CALCULATOR APP</h3>
+                        <p class="project-description">A simple yet functional calculator application built using web technologies.  It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division.  The calculator features a clear display, responsive buttons, and handles user input to provide accurate calculatio</p>
+                        <p class="project-technologies">HTML
+
+                            CSS
+                            
+                            JavaScript</p>
+                        <div class="mt-4">
+                            <img src="cal.jpg" alt="Project 3" class="rounded-md w-full border-2 border-green-500">
+                        </div>
+                        <a href="C:\Users\user\Documents\my projects\my website\calculator\index.html" class="view-project-link">View Project</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Education</h2>
+                <div class="space-y-4">
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Multimedia University of Kenya</h4>
+                        <p class="text-gray-400">Trainee Professional Software Engineer (September 2022 - Present)</p>
+                    </div>
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Tenwek High School</h4>
+                        <p class="text-gray-400">Kenya Certificate of Secondary Education (A-)</p>
+                        <p class="text-gray-400">2018 - 2022</p>
+                    </div>
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Molo Academy</h4>
+                        <p class="text-gray-400">Kenya Certificate of Primary Education (397)</p>
+                        <p class="text-gray-400">2014 - 2017</p>
+                    </div>
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Keringet Boarding</h4>
+                        <p class="text-gray-400">2012 - 2014</p>
+                    </div>
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Bright Star Academy</h4>
+                         <p class="text-gray-400">2007 - 2011</p>
+                    </div>
+                    <div class="">
+                        <h4 class="text-xl font-semibold text-green-300">Kerol Academy</h4>
+                         <p class="text-gray-400">2006</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Experience</h2>
+                <div class="">
+                    <h4 class="text-xl font-semibold text-green-300">Attachment - Kenya National Library Services</h4>
+                    <p class="text-gray-400 mb-4">May 2024 - August 2024</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Participated in code reviews, bug fixes, and testing procedures, ensuring the delivery of high-quality software solutions.</li>
+                        <li>Collaborated with a team of developers to design and implement new features for a web application using agile development methodologies.</li>
+                        <li>Gained hands-on experience with languages such as JavaScript, Java, HTML, CSS, Python, PHP.</li>
+                        <li>Engaged in daily stand-up meetings, providing updates on progress and actively contributing to problem-solving discussions.</li>
+                        <li>Demonstrated strong problem-solving skills and attention to detail while working in a fast-paced, dynamic environment.</li>
+                        <li>Learned to deploy and host a website on various hosting platforms, optimizing performance and ensuring seamless user experience.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Skills</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li>Organizational Skills</li>
+                    <li>Leadership Skills</li>
+                    <li>Research Skills</li>
+                    <li>Analytical Skills</li>
+                    <li>Communication Skills (Oral and Written)</li>
+                     <li>Excellent Learning Speed</li>
+                    <li>Responsibility Management</li>
+                    <li>Interpersonal Skills</li>
+                    <li>Computer Skills</li>
+                    <li>Web Hosting</li>
+                    <li>Coding</li>
+                </ul>
+            </section>
+
+            <section id="resume" class="mb-20">
+                <div class="resume-link-container">
+                    <h2 class="text-2xl font-semibold text-green-400 mb-4">Resume</h2>
+                    <p class="text-lg text-gray-300">
+                        You can view my resume by clicking the link below:
+                    </p>
+                    <a href="C:\Users\user\Documents\my projects\my website\CV.docx"  class="text-green-300 hover:text-green-400 underline font-semibold mt-2 inline-block">
+                        View Resume
+                    </a>
+                </div>
+            </section>
+
+            <section id="contact" class="mb-20">
+                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Contact Me</h2>
+                <p class="text-lg text-gray-300 mb-6">
+                    I'm always open to new opportunities and collaborations. Feel free to reach out to me through the following channels:
+                </p>
+                <ul class="list-none space-y-4">
+                    <li class="text-lg text-gray-300">
+                        <strong class="font-medium">Email:</strong> theegrandicon21@gmail.com
+                    </li>
+                    <li class="text-lg text-gray-300">
+                        <strong class="font-medium">Phone:</strong> 0790049183
+                    </li>
+                </ul>
+                <div class="contact-form">
+                    <h3 class="text-2xl font-semibold text-green-400 mb-4">Send a Message</h3>
+                    <form  method="POST" action="https://formspree.io/f/your-form-id">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" title="Facebook" target="_blank" rel="noopener noreferrer">
+                      <img src="facebook.png" alt="Facebook" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
+                    <a href="https://twitter.com/" title="Twitter"  rel="noopener noreferrer">
+                      <img src="x.png" alt="Twitter" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
+                    <a href="https://wa.me/" title="WhatsApp"  rel="noopener noreferrer">
+                      <img src="wa.jpeg" alt="WhatsApp" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
+                    <a href="https://github.com/" title="GitHub"  rel="noopener noreferrer">
+                      <img src="github.png" alt="GitHub" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
+                    <a href="https://www.linkedin.com/" title="LinkedIn"  rel="noopener noreferrer">
+                      <img src="linkedin.png" alt="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
+                  </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            &copy; 2025 Kiptoo Ngetich Kitur. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const header = document.querySelector("header");
+
+        hamburgerBtn.addEventListener("click", () => {
+            document.body.classList.toggle("nav-open");
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
