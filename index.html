@@ -16,22 +16,18 @@
         .text-shadow {
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        .project-card {
-            @apply bg-gray-800 rounded-lg shadow-md p-6 transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02];
-            color: #e2e8f0;
-        }
-        .project-title {
-            @apply text-green-400 font-semibold text-xl mb-2;
-        }
-        .project-description {
-            @apply text-gray-300 mb-4;
-        }
-        .project-technologies {
-            @apply text-gray-400 text-sm mb-2;
-        }
-        .view-project-link {
-            @apply text-green-300 hover:text-green-400 underline mt-4 block;
-        }
+        project-card {
+      background-color: #1e293b;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      color: #e2e8f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 255, 128, 0.2);
+    }
         .profile-image {
             border-radius: 50%;
             object-fit: cover;
@@ -291,44 +287,37 @@
                 </div>
             </section>
 
-            <section id="projects" class="mb-20">
-                <h2 class="text-3xl font-semibold text-green-400 mb-8 ">Featured Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card">
-                        <h3 class="project-title">Project 1: personal finance tracker</h3><br></br>
-                       <br></br>
-                        <p class="project-description">this app helps you track your finance and keep your day to day expenses for future use or  reference.</p>
-                        <br></br>
-                        <p class="project-technologies">Technologies used: HTML, <br></br>CSS,<br></br> JavaScript]</p>
-                        <div class="mt-4">
-                            <img src="https://repository-images.githubusercontent.com/580463034/28ce0204-55b6-4fd4-ab48-18a657965663" alt="Project 1" class="rounded-md w-full border-2 border-green-500">
-                        </div>
-                        <a href="https://kiptoo17.github.io/tracker.github.io/" class="view-project-link">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3 class="project-title">Project 2: LETEWA APP</h3>
-                        <p class="project-description">food ordering system</p>
-                        <p class="project-technologies">javascript ,html, css</p>
-                        <div class="mt-4">
-                            <img src="letewa.png" alt="Project 2" class="rounded-md w-full border-2 border-green-500">
-                        </div>
-                        <a href="https://kiptoo17.github.io/letewa.github.io/" class="view-project-link">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <h3 class="project-title">Project 3: CALCULATOR APP</h3><br></br><br></br>
-                        <p class="project-description">A simple yet functional calculator application built using web technologies.  It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division.  The calculator features a clear display, responsive buttons, and handles user input to provide accurate calculatio</p>
-                       <br></br> <p class="project-technologies">HTML<br></br>
+            <section id="projects" class="mb-16">
+      <h2 class="text-3xl font-semibold text-green-400 mb-6">Featured Projects</h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <h3 class="text-xl font-semibold text-green-300 mb-2">Finance Tracker</h3>
+          <p class="text-gray-300 mb-2">Track expenses and income easily with a simple interface.</p>
+          <p class="text-sm text-gray-400">HTML, CSS, JavaScript</p>
+          <img src="https://repository-images.githubusercontent.com/580463034/28ce0204-55b6-4fd4-ab48-18a657965663" alt="Finance Tracker" class="w-full rounded mt-4 border border-green-500" />
+          <a href="https://kiptoo17.github.io/tracker.github.io/" class="text-green-400 underline mt-2 inline-block">View Project</a>
+        </div>
 
-                            CSS
-                            <br></br>
-                            JavaScript</p>
-                        <div class="mt-4">
-                            <img src="cal.jpg" alt="Project 3" class="rounded-md w-full border-2 border-green-500">
-                        </div>
-                        <a href="https://kiptoo17.github.io/calculator.github.io/" class="view-project-link">View Project</a>
-                    </div>
-                </div>
-            </section>
+        <!-- Project 2 -->
+        <div class="project-card">
+          <h3 class="text-xl font-semibold text-green-300 mb-2">LETEWA App</h3>
+          <p class="text-gray-300 mb-2">A food ordering system.</p>
+          <p class="text-sm text-gray-400">HTML, CSS, JavaScript</p>
+          <img src="letewa.png" alt="LETEWA App" class="w-full rounded mt-4 border border-green-500" />
+          <a href="https://kiptoo17.github.io/letewa.github.io/" class="text-green-400 underline mt-2 inline-block">View Project</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <h3 class="text-xl font-semibold text-green-300 mb-2">Calculator App</h3>
+          <p class="text-gray-300 mb-2">Simple calculator with core arithmetic features.</p>
+          <p class="text-sm text-gray-400">HTML, CSS, JavaScript</p>
+          <img src="cal.jpg" alt="Calculator" class="w-full rounded mt-4 border border-green-500" />
+          <a href="https://kiptoo17.github.io/calculator.github.io/" class="text-green-400 underline mt-2 inline-block">View Project</a>
+        </div>
+      </div>
+    </section>
 
            
 
